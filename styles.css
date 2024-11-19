@@ -1,0 +1,102 @@
+:root {
+    --backgroundColor: white;
+    --textColor: black;
+    --numberColor: grey;
+    --calculatorBackgroundColor: lightgrey;
+    --fontSizeSmall: 12px;
+    --fontSizeMedium: 20px;
+    --fontSizeLarge: 32px;
+    --fontSizeLarger: 42px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--backgroundColor);
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator-container {
+    background-color: var(--calculatorBackgroundColor);
+    border: 2px solid black;
+    border-radius: 15px;
+    display: flex;
+    width: 600px;
+    height: 800px;
+    flex-wrap: wrap;
+}
+
+.result-container {
+    flex: 1 1 100%;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: var(--fontSizeLarger);
+}
+
+.calculator-main {
+    flex: 1 1 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+}
+
+.number-container {
+    flex: 1 1 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.number-button {
+    flex: 1 1 33%;
+    height: 25%;
+    font-size: var(--fontSizeLarge);
+}
+
+.operator-container {
+    flex: 1 1 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.operator-button {
+    flex: 1 1 15%;
+    width: 100%;
+    font-size: var(--fontSizeLarge);
+}
+
+.misc-operations-container {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.button.clear {
+    flex: 1 1 25%;
+    height: 50px;
+}
