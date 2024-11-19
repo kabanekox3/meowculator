@@ -111,10 +111,17 @@ division.addEventListener("click", () => {
 
 let evaluate = document.querySelector(".evaluate");
 evaluate.addEventListener("click", () => {
-    let currentDisplay = display.textContent.split("");
-    let value1 = currentDisplay[0];
-    let value2 = currentDisplay[2];
-    let operator = currentDisplay[1];
-    let result = operate(value1, operator, value2);
-    display.textContent = result;
+
+    let toEvaluate = display.textContent.split("");
+    let evaluationLength = toEvaluate.length;
+    let currentEvaluation = 0;
+    console.log(toEvaluate, evaluationLength)
+
+    for (let i = 0; i <= evaluationLength; i += 2) {
+        currentEvaluation = operate(toEvaluate[i], toEvaluate[i+1], toEvaluate[i+2]);
+        toEvaluate[i+2] = currentEvaluation;
+        console.log(toEvaluate)
+    }
+
+    display.textContent = toEvaluate[evaluationLength - 1]
 })
