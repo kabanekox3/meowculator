@@ -50,6 +50,11 @@ button0.addEventListener("click", () => {
     display.textContent = display.textContent + "0";
 })
 
+let decimal = document.querySelector(".decimal");
+decimal.addEventListener("click", () => {
+    display.textContent = display.textContent + "."
+})
+
 let clear = document.querySelector(".clear");
 clear.addEventListener("click", () => {
     display.textContent = "";
@@ -160,7 +165,7 @@ function stepwiseEvaluateInput (input) {
 
         for (let i = 0; i < loopLength; i++) {
             if (input[i] == "(") {
-                let closeBracket = input.indexOf(")");
+                let closeBracket = input.lastIndexOf(")");
                 let newInput = input.slice(i + 1, closeBracket);
                 if (newInput[0] == "-") {
                     newInput.splice(0, 0, 0);
