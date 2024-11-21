@@ -1,8 +1,9 @@
 :root {
     --backgroundColor: white;
     --textColor: black;
-    --numberColor: grey;
-    --calculatorBackgroundColor: lightgrey;
+    --numberColor: rgb(80, 80, 80);
+    --calculatorBackgroundColor: rgb(138, 138, 138);
+    --emphasis: rgb(63, 7, 155);
     --fontSizeSmall: 12px;
     --fontSizeMedium: 20px;
     --fontSizeLarge: 32px;
@@ -21,6 +22,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 95vh;
+    width: 95vw;
+    margin: auto;
 }
 
 .calculator-container {
@@ -50,9 +54,10 @@ body {
     border: 1px solid black;
     border-radius: 15px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: baseline;
+    align-items: flex-end;
     height: 600px;
+    padding: 10px;
 }
 
 .number-container {
@@ -60,7 +65,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 500px;
+    height: 100%;
     flex-wrap: wrap;
     padding: 10px;
 }
@@ -68,7 +73,7 @@ body {
 .number-button {
     flex: 1 1 33%;
     height: 25%;
-    font-size: var(--fontSizeLarge);
+    font-size: var(--fontSizeLarger);
 }
 
 .operator-container {
@@ -79,13 +84,13 @@ body {
     align-items: center;
     height: 100%;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 10px;
 }
 
 .operator-button {
     flex: 1 1 15%;
     width: 100%;
-    font-size: var(--fontSizeLarge);
+    font-size: var(--fontSizeLarger);
 }
 
 .misc-operations-container {
@@ -99,4 +104,10 @@ body {
 .button.clear {
     flex: 1 1 25%;
     height: 50px;
+    background-color: var(--emphasis);
+    
+}
+
+.button.evaluate {
+    color: var(--emphasis);
 }

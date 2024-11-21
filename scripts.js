@@ -1,35 +1,3 @@
-// calculation functions
-
-function add (num1, num2) {
-    return Number(num1) + Number(num2);
-}
-
-function subtract (num1, num2) {
-    return Number(num1) - Number(num2);
-}
-
-function multiply (num1, num2) {
-    return Number(num1) * Number(num2);
-}
-
-function divide (num1, num2) {
-    return Number(num1) / Number(num2);
-}
-
-// perform an operation
-
-function operate (num1, operator, num2) {
-    if (operator == "+") {
-        return  add(num1, num2);
-    } else if (operator == "-") {
-        return subtract(num1, num2);
-    } else if (operator == "*") {
-        return multiply(num1, num2);
-    } else if (operator == "/") {
-        return divide(num1, num2);
-    }
-}
-
 // display button outputs in calculator display
 
 let display = document.querySelector(".result-container");
@@ -110,18 +78,71 @@ division.addEventListener("click", () => {
 })
 
 let evaluate = document.querySelector(".evaluate");
+
+// new functions
+
 evaluate.addEventListener("click", () => {
+    let toEvaluate = display.textContent;
+    translateInput(toEvaluate);
+})
 
-    let toEvaluate = display.textContent.split("");
-    let evaluationLength = toEvaluate.length;
-    let currentEvaluation = 0;
-    console.log(toEvaluate, evaluationLength)
+function translateInput () {
+    
+    let input = display.textContent;
+    input = input.split("")
 
-    for (let i = 0; i <= evaluationLength; i += 2) {
-        currentEvaluation = operate(toEvaluate[i], toEvaluate[i+1], toEvaluate[i+2]);
-        toEvaluate[i+2] = currentEvaluation;
-        console.log(toEvaluate)
+    // convert each number to a number instead of string
+    for (let i = 0; i < input.length; i++) {
+        if (i % 2 == 0) {
+            input[i] = Number(input[i])
+        }
     }
 
-    display.textContent = toEvaluate[evaluationLength - 1]
-})
+    let value = stepwiseEvaluateInput(input);
+    display.textContent = value;
+}
+
+function stepwiseEvaluateInput (input) {
+    // search for each of operator by precidence and evaluate
+
+    let loopLength = input.length;
+
+    while(loopLength > 1) {
+
+        for (let i = 0; i < loopLength; i++) {
+            if (input[i] == "^") {
+                let evaluated = input[i-1] ** input[i+1];
+                input.splice(i-1, 3, evaluated);
+                loopLength = input.length;
+            }
+        }
+
+        for (let i = 0; i < loopLength; i++) {
+            if (input[i] == "*") {
+                let evaluated = input[i-1] * input[i+1];
+                input.splice(i-1, 3, evaluated);
+                loopLength = input.length;
+            } else if (input[i] == "/") {
+                let evaluated = input[i-1] / input[i+1];
+                input.splice(i-1, 3, evaluated);
+                loopLength = input.length;
+            }
+        }
+
+        for (let i = 0; i < loopLength; i++) {
+            if (input[i] == "+") {
+                let evaluated = input[i-1] + input[i+1];
+                input.splice(i-1, 3, evaluated);
+                loopLength = input.length;
+                console.log(input)
+            } else if (input[i] == "-") {
+                let evaluated = input[i-1] - input[i+1];
+                input.splice(i-1, 3, evaluated);
+                loopLength = input.length;
+            }
+        }
+        console.log(input)
+    }
+
+    return Number(input);
+}
