@@ -127,17 +127,30 @@ function translateInput () {
     console.log(input);
 
     // convert each number to a number instead of string
-    let reg = /^\d+$/;
+    //let reg = /^\d+$/;
+    //for (let i = 0; i < input.length; i++) {
+    //    if (reg.test(input[i]) == true) {
+    //        input[i] = Number(input[i])
+    //    } else if (input[i] == "") {
+    //        input.splice(i, 1);
+    //    }
+    //}
+
     for (let i = 0; i < input.length; i++) {
-        if (reg.test(input[i]) == true) {
+        if (isNumber(input[i]) ==  true) {
             input[i] = Number(input[i])
-        } else if (input[i] == "") {
+        } else if (input[i] == "")  {
             input.splice(i, 1);
         }
     }
 
     let value = stepwiseEvaluateInput(input);
     display.textContent = value;
+}
+
+function isNumber (n) {
+    let reg = /^\d+$/;
+    return reg.test(n);
 }
 
 function stepwiseEvaluateInput (input) {
