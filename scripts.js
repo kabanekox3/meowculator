@@ -57,6 +57,11 @@ clear.addEventListener("click", () => {
     display.textContent = "";
 })
 
+let round = document.querySelector(".round");
+round.addEventListener("click", () => {
+    display.textContent = Math.round(display.textContent);
+})
+
 let addition = document.querySelector(".add");
 addition.addEventListener("click", () => {
     display.textContent = display.textContent + " + ";

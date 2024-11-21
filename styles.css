@@ -104,8 +104,11 @@ body {
 .button.clear {
     flex: 1 1 25%;
     height: 50px;
-    background-color: var(--emphasis);
-    
+}
+
+.button.round {
+    flex: 1 1 25%;
+    height: 50px;
 }
 
 .button.evaluate {
