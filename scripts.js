@@ -98,6 +98,16 @@ power.addEventListener("click", () => {
     display.textContent = display.textContent + " ^ ";
 })
 
+let openBracket = document.querySelector(".open-bracket");
+openBracket.addEventListener("click", () => {
+    display.textContent = display.textContent + " ( "
+})
+
+let closeBracket = document.querySelector(".close-bracket");
+closeBracket.addEventListener("click", () => {
+    display.textContent = display.textContent + " ) "
+})
+
 let evaluate = document.querySelector(".evaluate");
 
 // new functions
@@ -112,14 +122,23 @@ function translateInput () {
     let input = display.textContent;
     input = input.split(" ")
     console.log(input);
+    var reg = /^\d+$/;
+
 
     // convert each number to a number instead of string
     for (let i = 0; i < input.length; i++) {
-        if (i % 2 == 0) {
+        if (reg.test(input[i]) == true) {
             input[i] = Number(input[i])
+        } else if (input[i] == "") {
+            input.splice(i, 1);
         }
     }
 
+    //console.log(input);
+    //console.log(input.indexOf(")"), input.slice(2 + 1, 6));
+    //console.log(stepwiseEvaluateInput(input.slice(2 + 1, 6)));
+    //input.splice(2, 5, 4)
+    //console.log(input)
     let value = stepwiseEvaluateInput(input);
     display.textContent = value;
 }
@@ -128,8 +147,18 @@ function stepwiseEvaluateInput (input) {
     // search for each of operator by precidence and evaluate
 
     let loopLength = input.length;
-
-    while(loopLength > 1) {
+    let i = 0
+    while(loopLength > 1 && i < 100) {
+        for (let i = 0; i < loopLength; i++) {
+            if (input[i] == "(") {
+                let closeBracket = input.indexOf(")");
+                let newInput = input.slice(i + 1, closeBracket);
+                let newLength = newInput.length;
+                let evaluated = stepwiseEvaluateInput(newInput);
+                input.splice(i, newLength + 2, evaluated);
+                loopLength = input.length;
+            }
+        }
 
         for (let i = 0; i < loopLength; i++) {
             if (input[i] == "^") {
@@ -163,6 +192,7 @@ function stepwiseEvaluateInput (input) {
                 loopLength = input.length;
             }
         }
+        i++
         console.log(input)
     }
 

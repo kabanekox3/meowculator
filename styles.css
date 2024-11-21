@@ -60,14 +60,43 @@ body {
     padding: 10px;
 }
 
-.number-container {
+.number-bracket-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex: 1 1 75%;
+    height: 100%;
+    padding: 10px;
+}
+
+.bracket-container {
+    flex: 1 1 10%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button.open-bracket {
+    flex: 1 1 100%;
+    height: 50px;
+}
+
+.button.close-bracket {
+    flex: 1 1 100%;
+    height: 50px;
+}
+
+.number-container {
+    flex: 1 1 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     flex-wrap: wrap;
     padding: 10px;
+    width: 100%;
 }
 
 .number-button {
