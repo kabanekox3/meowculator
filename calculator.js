@@ -1,5 +1,3 @@
-// display button outputs in calculator display
-
 let display = document.querySelector(".result-container");
 
 let button1 = document.querySelector(".one");
@@ -108,10 +106,15 @@ closeBracket.addEventListener("click", () => {
     display.textContent = display.textContent + " ) "
 })
 
-let evaluate = document.querySelector(".evaluate");
+let del = document.querySelector(".del");
+del.addEventListener("click", () => {
+    disp = display.textContent.split("");
+    disp.pop();
+    disp = disp.join("");
+    display.textContent = disp;
+})
 
-// new functions
- 
+let evaluate = document.querySelector(".evaluate");
 evaluate.addEventListener("click", () => {
     let toEvaluate = display.textContent;
     translateInput(toEvaluate);
@@ -122,10 +125,9 @@ function translateInput () {
     let input = display.textContent;
     input = input.split(" ")
     console.log(input);
-    var reg = /^\d+$/;
-
 
     // convert each number to a number instead of string
+    let reg = /^\d+$/;
     for (let i = 0; i < input.length; i++) {
         if (reg.test(input[i]) == true) {
             input[i] = Number(input[i])
@@ -134,11 +136,6 @@ function translateInput () {
         }
     }
 
-    //console.log(input);
-    //console.log(input.indexOf(")"), input.slice(2 + 1, 6));
-    //console.log(stepwiseEvaluateInput(input.slice(2 + 1, 6)));
-    //input.splice(2, 5, 4)
-    //console.log(input)
     let value = stepwiseEvaluateInput(input);
     display.textContent = value;
 }
