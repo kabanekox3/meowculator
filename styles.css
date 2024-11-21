@@ -154,7 +154,3 @@ body {
     flex: 1 1 25%;
     height: 50px;
 }
-
-.button.evaluate {
-    color: var(--emphasis);
-}
