@@ -146,10 +146,20 @@ function stepwiseEvaluateInput (input) {
     let loopLength = input.length;
     let i = 0
     while(loopLength > 1 && i < 100) {
+
+        for (let i = 0; i < loopLength-1; i++) {
+            if (input[i] + input[i+1] == ")(") {
+                input.splice(i+1, 0, "*");
+            }
+        }
+
         for (let i = 0; i < loopLength; i++) {
             if (input[i] == "(") {
                 let closeBracket = input.indexOf(")");
                 let newInput = input.slice(i + 1, closeBracket);
+                if (newInput[0] == "-") {
+                    newInput.splice(0, 0, 0);
+                }
                 let newLength = newInput.length;
                 let evaluated = stepwiseEvaluateInput(newInput);
                 input.splice(i, newLength + 2, evaluated);
