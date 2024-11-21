@@ -126,16 +126,6 @@ function translateInput () {
     input = input.split(" ")
     console.log(input);
 
-    // convert each number to a number instead of string
-    //let reg = /^\d+$/;
-    //for (let i = 0; i < input.length; i++) {
-    //    if (reg.test(input[i]) == true) {
-    //        input[i] = Number(input[i])
-    //    } else if (input[i] == "") {
-    //        input.splice(i, 1);
-    //    }
-    //}
-
     for (let i = 0; i < input.length; i++) {
         if (isNumber(input[i]) ==  true) {
             input[i] = Number(input[i])
@@ -163,6 +153,8 @@ function stepwiseEvaluateInput (input) {
         for (let i = 0; i < loopLength-1; i++) {
             if (input[i] + input[i+1] == ")(") {
                 input.splice(i+1, 0, "*");
+            } else if (input[i] == "(" && isNumber(input[i-1]) == true) {
+                input.splice(i, 0, "*")
             }
         }
 
