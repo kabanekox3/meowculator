@@ -93,6 +93,11 @@ division.addEventListener("click", () => {
     display.textContent = display.textContent + " / ";
 })
 
+let power = document.querySelector(".power");
+power.addEventListener("click", () => {
+    display.textContent = display.textContent + " ^ ";
+})
+
 let evaluate = document.querySelector(".evaluate");
 
 // new functions
