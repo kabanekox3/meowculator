@@ -62,6 +62,17 @@ round.addEventListener("click", () => {
     display.textContent = Math.round(display.textContent);
 })
 
+let negate = document.querySelector(".negate");
+negate.addEventListener("click", () => {
+    let currentDisplay = display.textContent;
+    currentDisplay = currentDisplay.split(" ");
+    if (Number(currentDisplay[0]) < 0 && currentDisplay.length == 1) {
+        currentDisplay[0] = String(0 - Number(currentDisplay[0]));
+        currentDisplay.join(" ")
+        display.textContent = currentDisplay;
+    }
+})
+
 let addition = document.querySelector(".add");
 addition.addEventListener("click", () => {
     display.textContent = display.textContent + " + ";
