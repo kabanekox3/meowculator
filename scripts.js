@@ -99,8 +99,8 @@ function translateInput () {
         }
     }
 
-    //let value = stepwiseEvaluateInput(input);
-    //display.textContent = value;
+    let value = stepwiseEvaluateInput(input);
+    display.textContent = value;
 }
 
 function stepwiseEvaluateInput (input) {
