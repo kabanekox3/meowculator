@@ -34,7 +34,7 @@ button6.addEventListener("click", () => {
 
 let button7 = document.querySelector(".seven");
 button7.addEventListener("click", () => {
-    display.textContent += "8";
+    display.textContent = display.textContent + "7";
 })
 
 let button8 = document.querySelector(".eight");
@@ -59,28 +59,28 @@ clear.addEventListener("click", () => {
 
 let addition = document.querySelector(".add");
 addition.addEventListener("click", () => {
-    display.textContent = display.textContent + "+";
+    display.textContent = display.textContent + " + ";
 })
 
 let subtraction = document.querySelector(".subtract");
 subtraction.addEventListener("click", () => {
-    display.textContent = display.textContent + "-";
+    display.textContent = display.textContent + " - ";
 })
 
 let multiplication = document.querySelector(".multiply");
 multiplication.addEventListener("click", () => {
-    display.textContent = display.textContent + "*";
+    display.textContent = display.textContent + " * ";
 })
 
 let division = document.querySelector(".divide");
 division.addEventListener("click", () => {
-    display.textContent = display.textContent + "/";
+    display.textContent = display.textContent + " / ";
 })
 
 let evaluate = document.querySelector(".evaluate");
 
 // new functions
-
+ 
 evaluate.addEventListener("click", () => {
     let toEvaluate = display.textContent;
     translateInput(toEvaluate);
@@ -89,7 +89,8 @@ evaluate.addEventListener("click", () => {
 function translateInput () {
     
     let input = display.textContent;
-    input = input.split("")
+    input = input.split(" ")
+    console.log(input);
 
     // convert each number to a number instead of string
     for (let i = 0; i < input.length; i++) {
@@ -98,8 +99,8 @@ function translateInput () {
         }
     }
 
-    let value = stepwiseEvaluateInput(input);
-    display.textContent = value;
+    //let value = stepwiseEvaluateInput(input);
+    //display.textContent = value;
 }
 
 function stepwiseEvaluateInput (input) {
