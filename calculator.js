@@ -169,18 +169,28 @@ function stepwiseEvaluateInput (input) {
             }
         }
 
-        for (let i = 0; i < loopLength; i++) {
-            if (input[i] == "(") {
-                let closeBracket = input.lastIndexOf(")");
-                let newInput = input.slice(i + 1, closeBracket);
-                if (newInput[0] == "-") {
-                    newInput.splice(0, 0, 0);
-                }
-                let newLength = newInput.length;
-                let evaluated = stepwiseEvaluateInput(newInput);
-                input.splice(i, newLength + 2, evaluated);
-                loopLength = input.length;
-            }
+        //for (let i = 0; i < loopLength; i++) {
+            //if (input[i] == "(") {
+                //let closeBracket = input.lastIndexOf(")");
+                //let newInput = input.slice(i + 1, closeBracket);
+                //if (newInput[0] == "-") {
+                //    newInput.splice(0, 0, 0);
+                //}
+                //let newLength = newInput.length;
+                //let evaluated = stepwiseEvaluateInput(newInput);
+                //input.splice(i, newLength + 2, evaluated);
+                //loopLength = input.length;
+        while (input.indexOf("(") != -1) {
+            console.log(input, input.lastIndexOf("("), input.indexOf(")", input.lastIndexOf("(",)), input.lastIndexOf("("), input.slice(input.lastIndexOf("(") +1, input.indexOf(")")))
+            let open = input.lastIndexOf("(");
+            let close = input.indexOf(")", open);
+            let newInput = input.slice(open + 1, close);
+            let newInputLength = newInput.length;
+            let evaluated = stepwiseEvaluateInput(newInput);
+            console.log(evaluated)
+            input.splice(open, newInputLength + 2, evaluated);
+            console.log(input)
+            loopLength = input.length;
         }
 
         for (let i = 0; i < loopLength; i++) {
@@ -216,8 +226,9 @@ function stepwiseEvaluateInput (input) {
             }
         }
         i++
-        console.log(input)
+        //console.log(input)
     }
 
     return Number(input);
 }
+
