@@ -167,19 +167,11 @@ function stepwiseEvaluateInput (input) {
             if (input[i] + input[i+1] == "--") {
                 input.splice(i, 2, "+");
             }
+            if (input[i] == "(" && input[i+1] == "-") {
+                input.splice(i+1, 0, 0);
+            }
         }
 
-        //for (let i = 0; i < loopLength; i++) {
-            //if (input[i] == "(") {
-                //let closeBracket = input.lastIndexOf(")");
-                //let newInput = input.slice(i + 1, closeBracket);
-                //if (newInput[0] == "-") {
-                //    newInput.splice(0, 0, 0);
-                //}
-                //let newLength = newInput.length;
-                //let evaluated = stepwiseEvaluateInput(newInput);
-                //input.splice(i, newLength + 2, evaluated);
-                //loopLength = input.length;
         while (input.indexOf("(") != -1) {
             console.log(input, input.lastIndexOf("("), input.indexOf(")", input.lastIndexOf("(",)), input.lastIndexOf("("), input.slice(input.lastIndexOf("(") +1, input.indexOf(")")))
             let open = input.lastIndexOf("(");
